@@ -1,0 +1,909 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>RiskShield AI | Risk Intelligence Center</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- Sidebar -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+
+            <div class="logo-icon">
+                🛡
+            </div>
+
+            <div>
+                <h2>RiskShield</h2>
+                <span>AI SECURITY</span>
+            </div>
+
+        </div>
+
+
+        <nav id="sidebarNav">
+
+            <a href="#" class="nav-item active" data-page="dashboard">
+                <span>◈</span>
+                Dashboard
+            </a>
+
+            <a href="#" class="nav-item" data-page="transactions">
+                <span>↗</span>
+                Transactions
+            </a>
+
+            <a href="#" class="nav-item" data-page="alerts">
+                <span>⚠</span>
+                Alerts
+                <b id="alertCount" class="nav-badge">0</b>
+            </a>
+
+            <a href="#" class="nav-item" data-page="risk-engine">
+                <span>◎</span>
+                Risk Engine
+            </a>
+
+            <a href="#" class="nav-item" data-page="analytics">
+                <span>◫</span>
+                Analytics
+            </a>
+
+            <a href="#" class="nav-item" data-page="investigations">
+                <span>⌁</span>
+                Investigations
+            </a>
+
+            <a href="#" class="nav-item" data-page="reports">
+                <span>▤</span>
+                Reports
+            </a>
+
+            <a href="#" class="nav-item" data-page="model-monitor">
+                <span>◉</span>
+                Model Monitor
+            </a>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                System Healthy
+            </div>
+
+            <small>
+                XGBoost V2.1
+            </small>
+
+            <small>
+                450 Features
+            </small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Main -->
+
+    <main>
+
+        <!-- Header -->
+
+        <header>
+
+            <div>
+
+                <div class="eyebrow">
+                    RISK INTELLIGENCE CENTER
+                </div>
+
+                <h1>
+                    Transaction Dashboard
+                </h1>
+
+                <p>
+                    Monitor, analyze and prevent fraudulent transactions.
+                </p>
+
+            </div>
+
+
+            <div class="connection">
+
+                <span class="pulse"></span>
+
+                API CONNECTED
+
+            </div>
+
+        </header>
+
+
+        <!-- Statistics -->
+
+        <section id="dashboardStats" class="stats">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <span>TRANSACTIONS ANALYZED</span>
+                    <div class="stat-icon blue">↗</div>
+                </div>
+
+                <strong id="totalTransactions">
+                    0
+                </strong>
+
+                <small>
+                    Current session
+                </small>
+
+            </div>
+
+
+            <div class="stat-card danger">
+
+                <div class="stat-top">
+                    <span>HIGH RISK</span>
+                    <div class="stat-icon red">⚠</div>
+                </div>
+
+                <strong id="highRisk">
+                    0
+                </strong>
+
+                <small>
+                    Requires attention
+                </small>
+
+            </div>
+
+
+            <div class="stat-card blocked">
+
+                <div class="stat-top">
+                    <span>BLOCKED</span>
+                    <div class="stat-icon orange">⛔</div>
+                </div>
+
+                <strong id="blockedTransactions">
+                    0
+                </strong>
+
+                <small>
+                    Prevented transactions
+                </small>
+
+            </div>
+
+
+            <div class="stat-card model-card">
+
+                <div class="stat-top">
+                    <span>MODEL</span>
+                    <div class="stat-icon purple">AI</div>
+                </div>
+
+                <strong>
+                    XGBoost
+                </strong>
+
+                <small>
+                    V2.1 • 450 features
+                </small>
+
+            </div>
+
+        </section>
+
+
+        <!-- Workspace -->
+
+        <section id="riskWorkspace" class="workspace">
+
+
+            <!-- Transaction Form -->
+
+            <div class="panel transaction-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            TRANSACTION SIMULATOR
+                        </span>
+
+                        <h2>
+                            Send Money
+                        </h2>
+
+                    </div>
+
+                    <div class="shield-mini">
+                        🛡
+                    </div>
+
+                </div>
+
+
+                <!-- Recipient -->
+
+                <div class="form-group">
+
+                    <label>
+                        RECIPIENT
+                    </label>
+
+                    <input
+                        id="recipient"
+                        type="number"
+                        placeholder="......."
+                        autocomplete="off"
+                    >
+
+                </div>
+
+
+                <!-- Transaction Type -->
+
+                <div class="form-group">
+
+                    <label>
+                        TRANSACTION TYPE
+                    </label>
+
+                    <select id="transactionType">
+
+                        <option value="UPI">
+                            UPI
+                        </option>
+
+                        <option value="BANK_TRANSFER">
+                            Bank Transfer
+                        </option>
+
+                        <option value="CARD">
+                            Card Payment
+                        </option>
+
+                        <option value="WALLET">
+                            Wallet
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- Amount -->
+
+                <div class="form-group">
+
+                    <label>
+                        AMOUNT
+                    </label>
+
+                    <div class="amount-input">
+
+                        <span>₹</span>
+
+                        <input
+                            id="amount"
+                            type="number"
+                            min="1"
+                            step="0.01"
+                            placeholder="10,000"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Analyze -->
+
+                <button
+                    id="analyzeButton"
+                    class="analyze-button"
+                    onclick="analyzeTransaction()"
+                >
+
+                    <span>◈</span>
+
+                    <span id="buttonText">
+                        ANALYZE TRANSACTION
+                    </span>
+
+                    <span>→</span>
+
+                </button>
+
+
+                <div
+                    id="error"
+                    class="error"
+                ></div>
+
+            </div>
+
+
+            <!-- Risk Engine -->
+
+            <div class="panel risk-panel">
+
+                <div class="panel-header">
+
+                    <div>
+
+                        <span class="panel-label">
+                            AI RISK ENGINE
+                        </span>
+
+                        <h2>
+                            Live Risk Analysis
+                        </h2>
+
+                    </div>
+
+                    <span class="ai-status">
+                        ● AI ONLINE
+                    </span>
+
+                </div>
+
+
+                <!-- Risk Orb -->
+
+                <div class="risk-visual">
+
+                    <div class="orb">
+
+                        <div class="orb-ring ring-one"></div>
+
+                        <div class="orb-ring ring-two"></div>
+
+                        <div class="orb-ring ring-three"></div>
+
+
+                        <div
+                            id="orbCore"
+                            class="orb-core"
+                        >
+
+                            <span id="orbScore">
+                                --
+                            </span>
+
+                            <small>
+                                RISK
+                            </small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- Risk Metrics -->
+
+                <div class="risk-metrics">
+
+                    <div>
+
+                        <span>
+                            RISK SCORE
+                        </span>
+
+                        <strong id="riskScore">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            FRAUD PROBABILITY
+                        </span>
+
+                        <strong id="fraudProbability">
+                            --
+                        </strong>
+
+                    </div>
+
+
+                    <div>
+
+                        <span>
+                            RISK LEVEL
+                        </span>
+
+                        <strong
+                            id="riskLevel"
+                            class="risk-value"
+                        >
+                            --
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- AI Decision -->
+
+            <div
+                id="decisionPanel"
+                class="panel decision-panel"
+            >
+
+                <span class="panel-label">
+                    AI DECISION
+                </span>
+
+
+                <div
+                    id="decisionIcon"
+                    class="decision-icon"
+                >
+                    ?
+                </div>
+
+
+                <h2 id="action">
+                    Awaiting transaction
+                </h2>
+
+
+                <p id="decisionText">
+                    Enter a transaction and let RiskShield AI
+                    evaluate the risk.
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Explainable AI -->
+
+        <section id="reasonsSection" class="panel reasons-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        EXPLAINABLE AI
+                    </span>
+
+                    <h2>
+                        Why this decision?
+                    </h2>
+
+                </div>
+
+                <span class="explain-badge">
+                    450 FEATURES
+                </span>
+
+            </div>
+
+
+            <div
+                id="reasons"
+                class="reasons"
+            >
+
+                <div class="empty-reason">
+                    Analyze a transaction to see AI risk indicators.
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Transaction History -->
+
+        <section id="historySection" class="panel history-panel">
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span class="panel-label">
+                        ACTIVITY
+                    </span>
+
+                    <h2>
+                        Recent Transactions
+                    </h2>
+
+                </div>
+
+
+                <button
+                    class="clear-button"
+                    onclick="clearHistory()"
+                >
+                    Clear History
+                </button>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>RECIPIENT</th>
+
+                            <th>TYPE</th>
+
+                            <th>AMOUNT</th>
+
+                            <th>RISK</th>
+
+                            <th>LEVEL</th>
+
+                            <th>ACTION</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="transactionHistory">
+
+                        <tr>
+
+                            <td
+                                colspan="6"
+                                class="empty-table"
+                            >
+                                No transactions analyzed yet.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- Sidebar Page -->
+
+        <section
+            id="sidebarPageView"
+            class="panel sidebar-page-view"
+            style="display:none;"
+        >
+        </section>
+
+    </main>
+
+</div>
+
+
+<!-- Alert Modal -->
+
+<div
+    id="alertModal"
+    class="modal"
+>
+
+    <div class="alert-box">
+
+        <button
+            class="close-modal"
+            onclick="closeAlert()"
+        >
+            ×
+        </button>
+
+
+        <div class="alert-symbol">
+            ⚠
+        </div>
+
+
+        <div class="alert-label">
+            RISKSHIELD ALERT
+        </div>
+
+
+        <h2>
+            High Risk Transaction
+        </h2>
+
+
+        <p id="alertMessage">
+            Suspicious transaction detected.
+        </p>
+
+
+        <div class="alert-recipient">
+
+            Recipient
+
+            <strong id="alertRecipient">
+                --
+            </strong>
+
+        </div>
+
+
+        <div class="alert-amount">
+
+            ₹<span id="alertAmount">
+                0
+            </span>
+
+        </div>
+
+
+        <div class="alert-stats">
+
+            <div>
+
+                <span>
+                    RISK SCORE
+                </span>
+
+                <strong id="alertScore">
+                    0
+                </strong>
+
+            </div>
+
+
+            <div>
+
+                <span>
+                    FRAUD PROBABILITY
+                </span>
+
+                <strong id="alertProbability">
+                    0%
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div
+            id="alertReasons"
+            class="alert-reasons"
+        ></div>
+
+
+        <div class="alert-actions">
+
+            <button
+                class="block-button"
+                onclick="blockTransaction()"
+            >
+                BLOCK TRANSACTION
+            </button>
+
+
+            <button
+                class="review-button"
+                onclick="closeAlert()"
+            >
+                REVIEW
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- JavaScript -->
+
+<script src="app.js"></script>
+
+
+<!-- Investigation Modal -->
+
+<div id="investigationModal" class="investigation-modal">
+
+    <div class="investigation-modal-content">
+
+        <button
+            class="investigation-close"
+            onclick="closeInvestigation()"
+        >
+            ×
+        </button>
+
+        <div class="investigation-header">
+
+            <span class="panel-label">
+                RISKSHIELD INVESTIGATION
+            </span>
+
+            <h2 id="investigationTitle">
+                #
+            </h2>
+
+            <p id="investigationSubtitle">
+                #
+            </p>
+
+        </div>
+
+
+        <!-- Transaction Summary -->
+
+        <div class="investigation-grid">
+
+            <div class="investigation-stat">
+
+                <span>RECIPIENT</span>
+
+                <strong id="investigationRecipient">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="investigation-stat">
+
+                <span>TRANSACTION TYPE</span>
+
+                <strong id="investigationType">
+                    --
+                </strong>
+
+            </div>
+
+
+            <div class="investigation-stat">
+
+                <span>AMOUNT</span>
+
+                <strong id="investigationAmount">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="investigation-stat">
+
+                <span>RISK SCORE</span>
+
+                <strong id="investigationScore">
+                    0/100
+                </strong>
+
+            </div>
+
+
+            <div class="investigation-stat">
+
+                <span>FRAUD PROBABILITY</span>
+
+                <strong id="investigationProbability">
+                    0%
+                </strong>
+
+            </div>
+
+
+            <div class="investigation-stat">
+
+                <span>RISK LEVEL</span>
+
+                <strong id="investigationLevel">
+                    LOW
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- Risk Reasons -->
+
+        <div class="investigation-reasons">
+
+            <span class="panel-label">
+                RISK INDICATORS
+            </span>
+
+            <ul id="investigationReasons">
+            </ul>
+
+        </div>
+
+
+        <!-- Decision -->
+
+        <div class="investigation-decision">
+
+            <span class="panel-label">
+                RECOMMENDED ACTION
+            </span>
+
+            <div
+                id="investigationAction"
+                class="investigation-action"
+            >
+                ALLOW
+            </div>
+
+        </div>
+
+
+        <!-- Actions -->
+
+        <div class="investigation-actions">
+
+            <button
+                class="investigation-btn allow"
+                onclick="investigationAction('ALLOW')"
+            >
+                ALLOW
+            </button>
+
+            <button
+                class="investigation-btn review"
+                onclick="investigationAction('REVIEW')"
+            >
+                REVIEW
+            </button>
+
+            <button
+                class="investigation-btn block"
+                onclick="investigationAction('BLOCK')"
+            >
+                BLOCK
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
+```
